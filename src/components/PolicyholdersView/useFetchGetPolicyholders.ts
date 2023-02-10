@@ -5,6 +5,7 @@ import fetchGetReducer, {
   setFetching,
   setFetchSuccess,
 } from './fetchGetReducer';
+import type { TFetchResult } from './fetchGetReducer';
 
 const initialState = {
   data: null,
@@ -12,7 +13,7 @@ const initialState = {
   isFetching: false,
 };
 
-const useFetchGetPolicyholders = () => {
+const useFetchGetPolicyholders = (): TFetchResult => {
   const [state, dispatch] = useReducer(fetchGetReducer, initialState);
 
   useEffect(() => {
