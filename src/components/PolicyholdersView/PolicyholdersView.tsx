@@ -1,6 +1,9 @@
 import { Typography } from '@mui/material';
+import { useContext } from 'react';
+import { PolicyholdersContext } from '../Contexts/PolicyholdersContext';
 import InfoTable from '../InfoTable';
-import useFetchGetPolicyholders from './useFetchGetPolicyholders';
+import { PostRequestButton } from './PostRequestButton';
+import useFetchPolicyholders from './useFetchPolicyholders';
 
 type TAddress = {
   line1: string;
@@ -11,7 +14,10 @@ type TAddress = {
 };
 
 function PolicyholdersView() {
-  const { data, error, isFetching } = useFetchGetPolicyholders();
+  const { state } = useContext(PolicyholdersContext);
+  const { data, error, isFetching } = state;
+
+  useFetchPolicyholders();
 
   const formatAddress = (address: TAddress): string => {
     const { line1, line2, city, state, postalCode } = address;
@@ -29,13 +35,6 @@ function PolicyholdersView() {
 
   return (
     <>
-      {isFetching ? (
-        <Typography component="span" variant="body2">
-          'Fetching Policy Holder Information. . .'
-        </Typography>
-      ) : (
-        ''
-      )}
       {data?.policyHolders.map((policyHolder) => {
         const { name, age, address, phoneNumber, isPrimary } = policyHolder;
         const infoTableRows = [
@@ -48,14 +47,23 @@ function PolicyholdersView() {
 
         return (
           <InfoTable
-            header="Policy Holder InfoTable"
+            sx={{ mb: 2 }}
+            header={`${name}'s Policy Holder InfoTable`}
             key={name + age + phoneNumber}
             rows={infoTableRows}
           />
         );
       })}
+      {isFetching ? (
+        <Typography component="p" sx={{ mb: 2 }} variant="body2">
+          'Fetching Policy Holder Information. . .'
+        </Typography>
+      ) : (
+        ''
+      )}
+      <PostRequestButton />
       {error ? (
-        <Typography color="error" component="span" variant="body2">
+        <Typography color="error" component="p" sx={{ mt: 2 }} variant="body2">
           `An error occurred while fetching the Policy Holder Information:
           {error.message}`
         </Typography>
