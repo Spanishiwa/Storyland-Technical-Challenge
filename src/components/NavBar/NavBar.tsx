@@ -1,7 +1,8 @@
 import { Link, Box } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, NavLink } from 'react-router-dom';
 type TNavBar = {
   links: {
+    isActive?: boolean;
     text: string;
     href: string;
     'data-testid'?: string;
@@ -29,14 +30,16 @@ function NavBar({ links }: TNavBar) {
         <img src="/storyland_logo_black.svg" alt="logo"></img>
       </Link>
 
-      {links.map(({ text, href, 'data-testid': dataTestId }) => (
+      {links.map(({ text, href, 'data-testid': dataTestId, isActive }) => (
         <Link
-          component={RouterLink}
+          aria-current={isActive ? 'page' : false}
+          component={NavLink}
           key={href}
           to={href}
           color="#fff"
           underline="hover"
           sx={{
+            '&.active': { fontSize: '30px' },
             cursor: 'pointer',
             '&:not(:last-of-type)': {
               marginBottom: '16px',
