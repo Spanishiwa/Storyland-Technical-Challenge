@@ -14,7 +14,11 @@ type TPostBody = {
   body: string;
 };
 
-export const PostRequestButton = () => {
+type PostRequestButtonProps = {
+  handleClick?: () => void;
+};
+
+export const PostRequestButton = (props: PostRequestButtonProps) => {
   const { dispatch } = useContext(PolicyholdersContext);
 
   const getPOSTBody = (): TPostBody => {
@@ -40,12 +44,15 @@ export const PostRequestButton = () => {
     }
   };
 
+  const handleClick = props.handleClick || handleClickFetchPost;
+
   return (
     <Button
-      onClick={handleClickFetchPost}
+      onClick={handleClick}
       size="small"
       startIcon={<PersonAdd />}
-      sx={{ py: '10px' }}
+      sx={{ mb: 2, py: '10px' }}
+      title="Click here to add a new, unique Policy Holder above"
       type="button"
       variant="contained"
     >
