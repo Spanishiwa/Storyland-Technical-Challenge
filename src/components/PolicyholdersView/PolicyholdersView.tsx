@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { toDoList } from '.';
 import { PolicyholdersContext } from '../Contexts/PolicyholdersContext';
@@ -35,8 +35,17 @@ function PolicyholdersView() {
     return `${age} year${age > 1 ? 's' : ''} young`;
   };
 
+  const imgSrc = process.env.PUBLIC_URL + '/avatar.jpeg';
+
   return (
     <>
+      <Box sx={{ mb: 2, textAlign: 'center' }}>
+        <img
+          src={imgSrc}
+          alt="Cool-Sunglasses-Developer"
+          style={{ borderRadius: '50%', maxHeight: '200px', maxWidth: '200px' }}
+        />
+      </Box>
       {data?.policyHolders.map((policyHolder) => {
         const { name, age, address, phoneNumber, isPrimary } = policyHolder;
         const infoTableRows = [
