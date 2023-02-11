@@ -54,8 +54,4 @@ const instructions = [
   },
 ];
 
-const GET_POLICYHOLDERS_URL =
-  'https://fe-interview-technical-challenge-api-git-main-sure.vercel.app/api/policyholders';
-
 export default instructions;
-export { GET_POLICYHOLDERS_URL };
