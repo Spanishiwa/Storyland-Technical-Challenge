@@ -42,7 +42,7 @@ const setFetchFail = (err: Error): TAction => {
   };
 };
 
-const setFetching = (): TAction => {
+const setFetching = () => {
   return { type: SET_FETCHING };
 };
 
@@ -84,4 +84,3 @@ const fetchGetReducer = (
 
 export default fetchGetReducer;
 export { setFetchFail, setFetching, setFetchSuccess };
-export type { TFetchResult };
