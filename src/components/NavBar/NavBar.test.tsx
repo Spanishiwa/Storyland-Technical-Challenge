@@ -1,5 +1,6 @@
 import NavBar from './NavBar';
 import { renderWithProviders } from '../../utils/test';
+import links from '../../constants/links';
 
 describe('NavBar', () => {
   const defaultProps = {
@@ -20,4 +21,9 @@ describe('NavBar', () => {
 
   // TODO: Challenge 2
   it('should render an `href` attribute for each link', () => {});
+  const { getByTestId } = renderWithProviders(<NavBar links={links} />);
+
+  links.forEach((link) => {
+    expect(getByTestId(link['data-testid']).getAttribute('href')).toBeDefined();
+  });
 });

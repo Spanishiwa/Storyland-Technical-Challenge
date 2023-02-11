@@ -69,3 +69,11 @@ Add a second table below the first policyholder table that renders the new polic
 export const challenge9 = `
 Add some text at the bottom of \`PolicyHoldersView\` describing any remaining work you would do in this repo before shipping your code to a "production" environment.
 `;
+
+export const toDo1 = `Add unit tests for the Add a Policyholder button feature from Challenge #7 asserting that the button should exist and its onClick property is called when clicked.`;
+export const toDo2 = `Add MUI breakpoints for responsive design`;
+export const toDo3 = `Adjust styling on conditionally rendered elements/messages so that elements don't move when messages conditionally display`;
+export const toDo4 = `Double check Challenge #8, I'm not sure what you guys wanted me to do with the response data`;
+export const toDo5 = `Ask about the state from Challenge #5 and #8, I wasn't sure if I should have flattened the data before storing it in state`;
+export const toDo6 = `Suggest toast notifications or an animation when async data is loading`;
+export const toDo7 = `This was a fair challenge which is all you can ask for. Thanks`;
