@@ -13,10 +13,10 @@ function InstructionsBar({ onClick }: TInstructionsBar) {
       }}
     >
       <Button
-        color="primary"
         onClick={onClick}
-        size="large"
         variant="contained"
+        color="primary"
+        size="large"
       >
         View challenges
       </Button>
