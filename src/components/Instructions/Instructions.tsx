@@ -15,8 +15,6 @@ import instructionsConfig from '../../constants/instructions';
 import ReactMarkdown from 'react-markdown';
 import { ComponentProps } from 'react';
 
-type InstructionsProps = { instructions?: { title: string; label: string }[] };
-
 const markdownComponents: ComponentProps<typeof ReactMarkdown>['components'] = {
   p: ({ node, ...props }) => (
     <Typography
@@ -43,12 +41,10 @@ const markdownComponents: ComponentProps<typeof ReactMarkdown>['components'] = {
   a: ({ node, ...props }) => <Link target="_blank" {...props} />,
 };
 
-function Instructions(props: InstructionsProps) {
-  const instructions = props.instructions || instructionsConfig;
-
+function Instructions() {
   return (
     <>
-      {instructions.map(({ title, label }, i) => (
+      {instructionsConfig.map(({ title, label }, i) => (
         <Accordion defaultExpanded={i === 0} key={title}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

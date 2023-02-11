@@ -1,9 +1,7 @@
 import { Typography } from '@mui/material';
 import { useContext } from 'react';
-import { toDoList } from '.';
 import { PolicyholdersContext } from '../Contexts/PolicyholdersContext';
 import InfoTable from '../InfoTable';
-import Instructions from '../Instructions';
 import { PostRequestButton } from './PostRequestButton';
 import useFetchPolicyholders from './useFetchPolicyholders';
 
@@ -72,10 +70,6 @@ function PolicyholdersView() {
       ) : (
         ``
       )}
-      <Typography component="p" variant="h6" sx={{ mt: 4 }}>
-        Challenge #9 remaining to-do's before release:
-      </Typography>
-      <Instructions instructions={toDoList}></Instructions>
     </>
   );
 }

@@ -68,22 +68,17 @@ const fetchReducer = (state: TFetchResult, action: TAction): TFetchResult => {
           }
         );
 
-        const isUniquePayloadPolicyholder = (
-          payloadPolicyholder: TPolicyHolder
-        ): boolean => {
-          const stringifiedPayloadPolicyholder =
-            JSON.stringify(payloadPolicyholder);
-
-          const isUnique = !stringifiedPrevPolicyholders.includes(
-            stringifiedPayloadPolicyholder
-          );
-
-          return isUnique;
-        };
-
         const uniquePayloadPolicyholders = payloadPolicyholders.filter(
           (payloadPolicyholder) => {
-            return isUniquePayloadPolicyholder(payloadPolicyholder);
+            const stringifiedPayloadPolicyholder =
+              JSON.stringify(payloadPolicyholder);
+
+            const isUniquePayloadPolicyholder =
+              !stringifiedPrevPolicyholders.includes(
+                stringifiedPayloadPolicyholder
+              );
+
+            return isUniquePayloadPolicyholder;
           }
         );
 
